@@ -162,3 +162,4 @@ elif emisferio == 'sur':
         print('La estacion es: Invierno')
     elif (mes == 9 and dia >= 21) or (mes <= 12 and dia <= 20) or (mes < 12):
         print('La estacion es: Primavera')
+        
