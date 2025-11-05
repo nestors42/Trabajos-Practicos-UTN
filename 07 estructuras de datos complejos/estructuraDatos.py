@@ -94,23 +94,61 @@ palabras_unicas: {"hola", "mundo"}
 recuento: {"hola": 2, "mundo": 1}
 '''
 
-def ejecutar_frase_simple():
+# def ejecutar_frase_simple():
     
-    frase = input("ingrese la frase: ").lower()
+#     frase = input("ingrese la frase: ").lower()
     
-    frase_separada = frase.split()
+#     frase_separada = frase.split()
     
-    palabras_unicas = set(frase_separada)
+#     palabras_unicas = set(frase_separada)
     
-    recuento = {}
+#     recuento = {}
     
-    for palabra in frase_separada:
+#     for palabra in frase_separada:
         
-        recuento[palabra] = recuento.get(palabra, 0) + 1
+#         recuento[palabra] = recuento.get(palabra, 0) + 1
         
-    print("----- resultado ----")
-    print(f"la palabra unica: {palabras_unicas}")
-    print(f"el recuento: {recuento}")
+#     print("----- resultado ----")
+#     print(f"la palabra unica: {palabras_unicas}")
+#     print(f"el recuento: {recuento}")
     
-ejecutar_frase_simple()
+# ejecutar_frase_simple()
+
+'''
+6) Permití ingresar los nombres de 3 alumnos, y para cada uno una tupla de 3 notas. 
+Luego, mostrá el promedio de cada alumno. 
+Ejemplo:
+alumnos = {
+    "sofia" : (10,9,8)
+    "luis" : (6,7,7) 
+}
+'''
+def promedio_alumnos():
+    alumnos = {}
+    
+    NUM_ALUMNOS = 3
+    NUM_NOTAS = 3
+    
+    for i in range(NUM_ALUMNOS):
+        nombre_alumn = input(f"ingrese el nombre de alumno {i + 1}: ").strip().capitalize()
+        
+        notas_lista = []
+        
+        for j in range(NUM_NOTAS):
+            
+            nota = int(input(f"nota {j + 1}: "))
+            
+            notas_lista.append(nota)
+        alumnos[nombre_alumn] = tuple(notas_lista)
+        
+    print("---- resultados ----")
+    
+    for nombre_alumnos, notas in alumnos.items():
+        promedio = sum(notas) / len(notas)
+        
+        print(f"el promedio de {nombre_alumnos} (notas: ) es: {promedio}")
+        
+promedio_alumnos()
+    
+
 
