@@ -123,32 +123,56 @@ alumnos = {
     "luis" : (6,7,7) 
 }
 '''
-def promedio_alumnos():
-    alumnos = {}
+# def promedio_alumnos():
+#     alumnos = {}
     
-    NUM_ALUMNOS = 3
-    NUM_NOTAS = 3
+#     NUM_ALUMNOS = 3
+#     NUM_NOTAS = 3
     
-    for i in range(NUM_ALUMNOS):
-        nombre_alumn = input(f"ingrese el nombre de alumno {i + 1}: ").strip().capitalize()
+#     for i in range(NUM_ALUMNOS):
+#         nombre_alumn = input(f"ingrese el nombre de alumno {i + 1}: ").strip().capitalize()
         
-        notas_lista = []
+#         notas_lista = []
         
-        for j in range(NUM_NOTAS):
+#         for j in range(NUM_NOTAS):
             
-            nota = int(input(f"nota {j + 1}: "))
+#             nota = int(input(f"nota {j + 1}: "))
             
-            notas_lista.append(nota)
-        alumnos[nombre_alumn] = tuple(notas_lista)
+#             notas_lista.append(nota)
+#         alumnos[nombre_alumn] = tuple(notas_lista)
         
-    print("---- resultados ----")
+#     print("---- resultados ----")
     
-    for nombre_alumnos, notas in alumnos.items():
-        promedio = sum(notas) / len(notas)
+#     for nombre_alumnos, notas in alumnos.items():
+#         promedio = sum(notas) / len(notas)
         
-        print(f"el promedio de {nombre_alumnos} (notas: ) es: {promedio}")
+#         print(f"el promedio de {nombre_alumnos} (notas: ) es: {promedio}")
         
-promedio_alumnos()
+# promedio_alumnos()
     
+'''
+7) Dado dos sets de números, representando dos listas de estudiantes que aprobaron Parcial 1 
+y Parcial 2: 
+• Mostrá los que aprobaron ambos parciales. 
+• Mostrá los que aprobaron solo uno de los dos. 
+• Mostrá la lista total de estudiantes que aprobaron al menos un parcial (sin repetir).
+'''
 
+# Definición de los sets de estudiantes
+parcial_1 = {101, 105, 110, 115, 120, 125}
+parcial_2 = {101, 115, 120, 130, 135, 140}
 
+print(f"Estudiantes que aprobaron Parcial 1: {parcial_1}")
+print(f"Estudiantes que aprobaron Parcial 2: {parcial_2}\n")
+
+# 1. Mostrar los que aprobaron ambos parciales (Intersección)
+ambos_parciales = parcial_1 & parcial_2
+print(f"1. Estudiantes que aprobaron AMBOS parciales (Intersección): {ambos_parciales}")
+
+# 2. Mostrar los que aprobaron solo uno de los dos (Diferencia Simétrica)
+solo_uno = parcial_1 ^ parcial_2
+print(f"2. Estudiantes que aprobaron SOLO UNO de los dos (Diferencia Simétrica): {solo_uno}")
+
+# 3. Mostrar la lista total de estudiantes que aprobaron al menos un parcial (Unión)
+al_menos_uno = parcial_1 | parcial_2
+print(f"3. Lista TOTAL de estudiantes que aprobaron al menos uno (Unión): {al_menos_uno}")
