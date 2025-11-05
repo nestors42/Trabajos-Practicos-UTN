@@ -48,39 +48,39 @@ Ejemplo:
 contactos = {"Juan": "123456", "Ana": "987654"}
 '''
 
-contactos = {}
-NUM_CONTACTOS = 5
+# contactos = {}
+# NUM_CONTACTOS = 5
 
 # ITERAMOS NUM_CONTACTO PARA QUE SOLO PUEDA LLENAR 5 NUMEROS
 
-for i in range(NUM_CONTACTOS):
-    # bucle while para preguntar nombre
-    while True:
-        nombre = input(f"ingrese el nombre del contacto {i + 1}: ").strip()
-        if nombre:
-            break
-        else:
-            print("el campo no puede estar vacio")
+# for i in range(NUM_CONTACTOS):
+#     # bucle while para preguntar nombre
+#     while True:
+#         nombre = input(f"ingrese el nombre del contacto {i + 1}: ").strip()
+#         if nombre:
+#             break
+#         else:
+#             print("el campo no puede estar vacio")
     
-    while True:
-        numero = input(f"ingrese el numero telefonico de {nombre}: ").strip()
-        if numero:
-            break
-        else:
-            print("el campo no puede estar vacio")
+#     while True:
+#         numero = input(f"ingrese el numero telefonico de {nombre}: ").strip()
+#         if numero:
+#             break
+#         else:
+#             print("el campo no puede estar vacio")
         
 
-    contactos[nombre] = numero
-    print(f"el contacto {nombre} fue cargado exitosamente")
+#     contactos[nombre] = numero
+#     print(f"el contacto {nombre} fue cargado exitosamente")
     
-nombre_busqueda = input("ingrese el nombre a buscar").strip()
+# nombre_busqueda = input("ingrese el nombre a buscar").strip()
 
-numero_encontrado = contactos.get(nombre_busqueda)
+# numero_encontrado = contactos.get(nombre_busqueda)
 
-if numero_encontrado:
-    print(f"el numero de telefonico de {nombre_busqueda} es: {numero_encontrado}")
-else:
-    print(f"lo siento el {nombre_busqueda} no existe agenda")
+# if numero_encontrado:
+#     print(f"el numero de telefonico de {nombre_busqueda} es: {numero_encontrado}")
+# else:
+#     print(f"lo siento el {nombre_busqueda} no existe agenda")
     
 
 '''
@@ -93,3 +93,24 @@ salida:
 palabras_unicas: {"hola", "mundo"}
 recuento: {"hola": 2, "mundo": 1}
 '''
+
+def ejecutar_frase_simple():
+    
+    frase = input("ingrese la frase: ").lower()
+    
+    frase_separada = frase.split()
+    
+    palabras_unicas = set(frase_separada)
+    
+    recuento = {}
+    
+    for palabra in frase_separada:
+        
+        recuento[palabra] = recuento.get(palabra, 0) + 1
+        
+    print("----- resultado ----")
+    print(f"la palabra unica: {palabras_unicas}")
+    print(f"el recuento: {recuento}")
+    
+ejecutar_frase_simple()
+
