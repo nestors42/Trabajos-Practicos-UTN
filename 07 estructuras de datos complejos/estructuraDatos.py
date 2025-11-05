@@ -158,21 +158,22 @@ y Parcial 2:
 • Mostrá la lista total de estudiantes que aprobaron al menos un parcial (sin repetir).
 '''
 
-# Definición de los sets de estudiantes
-parcial_1 = {101, 105, 110, 115, 120, 125}
-parcial_2 = {101, 115, 120, 130, 135, 140}
+# definimos los dos conjuntos
 
-print(f"Estudiantes que aprobaron Parcial 1: {parcial_1}")
-print(f"Estudiantes que aprobaron Parcial 2: {parcial_2}\n")
+parcial_1 = {"Ana", "Beto", "Carlos", "Diana", "Elias", "Flor"}
+parcial_2 = {"Ana", "Elias", "Guillermo", "Hugo", "Irene", "Julia"}
 
-# 1. Mostrar los que aprobaron ambos parciales (Intersección)
+print(f"estudiantes que aprobaron el parcial 1: {parcial_1}")
+print(f"estudiantes que aprobaron el parcial 2: {parcial_2}")
+
+# mostramos los alumnos que aprobaron ambos parciales
 ambos_parciales = parcial_1 & parcial_2
-print(f"1. Estudiantes que aprobaron AMBOS parciales (Intersección): {ambos_parciales}")
+print(f"los alumnos que aprobaron ambos parciales: {ambos_parciales}")
 
-# 2. Mostrar los que aprobaron solo uno de los dos (Diferencia Simétrica)
+# los que aprobaron solo uno de los examenes
 solo_uno = parcial_1 ^ parcial_2
-print(f"2. Estudiantes que aprobaron SOLO UNO de los dos (Diferencia Simétrica): {solo_uno}")
+print(f"alumnos que aprobaron solo un examen: {solo_uno}")
 
-# 3. Mostrar la lista total de estudiantes que aprobaron al menos un parcial (Unión)
+# los alumnos que aprobaron al menos un examen
 al_menos_uno = parcial_1 | parcial_2
-print(f"3. Lista TOTAL de estudiantes que aprobaron al menos uno (Unión): {al_menos_uno}")
+print(f"estudiantes que aprobaron al menos un examen: {al_menos_uno}")
