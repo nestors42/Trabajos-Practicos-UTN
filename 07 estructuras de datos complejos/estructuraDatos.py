@@ -160,20 +160,104 @@ y Parcial 2:
 
 # definimos los dos conjuntos
 
-parcial_1 = {"Ana", "Beto", "Carlos", "Diana", "Elias", "Flor"}
-parcial_2 = {"Ana", "Elias", "Guillermo", "Hugo", "Irene", "Julia"}
+# parcial_1 = {"Ana", "Beto", "Carlos", "Diana", "Elias", "Flor"}
+# parcial_2 = {"Ana", "Elias", "Guillermo", "Hugo", "Irene", "Julia"}
 
-print(f"estudiantes que aprobaron el parcial 1: {parcial_1}")
-print(f"estudiantes que aprobaron el parcial 2: {parcial_2}")
+# print(f"estudiantes que aprobaron el parcial 1: {parcial_1}")
+# print(f"estudiantes que aprobaron el parcial 2: {parcial_2}")
 
-# mostramos los alumnos que aprobaron ambos parciales
-ambos_parciales = parcial_1 & parcial_2
-print(f"los alumnos que aprobaron ambos parciales: {ambos_parciales}")
+# # mostramos los alumnos que aprobaron ambos parciales
+# ambos_parciales = parcial_1 & parcial_2
+# print(f"los alumnos que aprobaron ambos parciales: {ambos_parciales}")
 
-# los que aprobaron solo uno de los examenes
-solo_uno = parcial_1 ^ parcial_2
-print(f"alumnos que aprobaron solo un examen: {solo_uno}")
+# # los que aprobaron solo uno de los examenes
+# solo_uno = parcial_1 ^ parcial_2
+# print(f"alumnos que aprobaron solo un examen: {solo_uno}")
 
-# los alumnos que aprobaron al menos un examen
-al_menos_uno = parcial_1 | parcial_2
-print(f"estudiantes que aprobaron al menos un examen: {al_menos_uno}")
+# # los alumnos que aprobaron al menos un examen
+# al_menos_uno = parcial_1 | parcial_2
+# print(f"estudiantes que aprobaron al menos un examen: {al_menos_uno}")
+
+'''
+8) Armá un diccionario donde las claves sean nombres de productos y los valores su stock. 
+Permití al usuario: 
+• Consultar el stock de un producto ingresado. 
+• Agregar unidades al stock si el producto ya existe. 
+• Agregar un nuevo producto si no existe.
+'''
+
+# Código corregido y completado:
+STOCK_INVENTARIO = {
+    "manzana": 50,
+    "banana": 100,
+    "pera": 60
+}
+    
+def consultar_stock(stock):
+    producto = input("ingrese el nombre del producto a consultar: ").strip().lower()
+    # Usamos .get() para obtener la cantidad, o None si no existe
+    cantidad = stock.get(producto) 
+    
+    if cantidad is not None:
+        # Se imprime el stock si la cantidad existe
+        print(f"El stock de {producto.capitalize()} es: {cantidad} unidades.")
+    else:
+        # Se imprime un error si el producto no existe (cantidad es None)
+        print(f"El producto '{producto.capitalize()}' no se encuentra en el inventario.")
+        
+        
+def modificar_stock(stock):
+    producto = input("ingrese el nombre del producto a modificar/agregar: ").strip().lower()
+    
+    unidades_asumar = int(input("cuantas unidades quieres agregar: "))
+    
+    if unidades_asumar <= 0:
+        print("ERROR: la opcion debe ser un numero positivo, vuelve a intentarlo")
+        return
+    
+    if producto in stock:
+        stock[producto] += unidades_asumar 
+        print(f"Se agregaron {unidades_asumar} a {producto.capitalize()}. Total nuevo: {stock[producto]}")
+        
+    else:
+        stock[producto] = unidades_asumar
+        print(f"Producto nuevo agregado. {producto.capitalize()} se agregó con {unidades_asumar} unidades.")
+        
+        
+def mostrar_inventario_salir(stock):
+    for prod, cant in STOCK_INVENTARIO.items():
+        print(f"{prod.capitalize()}: {cant}")
+    print("Saliendo del programa.")
+    return True
+
+# Realizamos el menú de opciones
+def gestionar_inventario():
+    while True:
+        print("\nOpciones:")
+        print("1. Consultar stock de un producto")
+        print("2. Agregar unidades / nuevo producto")
+        print("3. Mostrar todo el inventario y Salir")
+        
+        
+        option = input("ingrese una opcion (1 / 2 / 3): ").strip() 
+        
+        if option == '1':
+            consultar_stock(STOCK_INVENTARIO)
+            
+        elif option == '2':
+            
+            modificar_stock(STOCK_INVENTARIO)
+            pass
+        
+        elif option == '3':
+            mostrar_inventario_salir(STOCK_INVENTARIO)
+            
+            break 
+        
+        else:
+            print("Opción no válida. Por favor, intente de nuevo.")
+
+gestionar_inventario()
+    
+        
+        
