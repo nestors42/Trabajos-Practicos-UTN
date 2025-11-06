@@ -187,77 +187,116 @@ Permití al usuario:
 '''
 
 # Código corregido y completado:
-STOCK_INVENTARIO = {
-    "manzana": 50,
-    "banana": 100,
-    "pera": 60
-}
+# STOCK_INVENTARIO = {
+#     "manzana": 50,
+#     "banana": 100,
+#     "pera": 60
+# }
     
-def consultar_stock(stock):
-    producto = input("ingrese el nombre del producto a consultar: ").strip().lower()
-    # Usamos .get() para obtener la cantidad, o None si no existe
-    cantidad = stock.get(producto) 
+# def consultar_stock(stock):
+#     producto = input("ingrese el nombre del producto a consultar: ").strip().lower()
+#     # Usamos .get() para obtener la cantidad, o None si no existe
+#     cantidad = stock.get(producto) 
     
-    if cantidad is not None:
-        # Se imprime el stock si la cantidad existe
-        print(f"El stock de {producto.capitalize()} es: {cantidad} unidades.")
-    else:
-        # Se imprime un error si el producto no existe (cantidad es None)
-        print(f"El producto '{producto.capitalize()}' no se encuentra en el inventario.")
+#     if cantidad is not None:
+#         # Se imprime el stock si la cantidad existe
+#         print(f"El stock de {producto.capitalize()} es: {cantidad} unidades.")
+#     else:
+#         # Se imprime un error si el producto no existe (cantidad es None)
+#         print(f"El producto '{producto.capitalize()}' no se encuentra en el inventario.")
         
         
-def modificar_stock(stock):
-    producto = input("ingrese el nombre del producto a modificar/agregar: ").strip().lower()
+# def modificar_stock(stock):
+#     producto = input("ingrese el nombre del producto a modificar/agregar: ").strip().lower()
     
-    unidades_asumar = int(input("cuantas unidades quieres agregar: "))
+#     unidades_asumar = int(input("cuantas unidades quieres agregar: "))
     
-    if unidades_asumar <= 0:
-        print("ERROR: la opcion debe ser un numero positivo, vuelve a intentarlo")
-        return
+#     if unidades_asumar <= 0:
+#         print("ERROR: la opcion debe ser un numero positivo, vuelve a intentarlo")
+#         return
     
-    if producto in stock:
-        stock[producto] += unidades_asumar 
-        print(f"Se agregaron {unidades_asumar} a {producto.capitalize()}. Total nuevo: {stock[producto]}")
+#     if producto in stock:
+#         stock[producto] += unidades_asumar 
+#         print(f"Se agregaron {unidades_asumar} a {producto.capitalize()}. Total nuevo: {stock[producto]}")
         
-    else:
-        stock[producto] = unidades_asumar
-        print(f"Producto nuevo agregado. {producto.capitalize()} se agregó con {unidades_asumar} unidades.")
+#     else:
+#         stock[producto] = unidades_asumar
+#         print(f"Producto nuevo agregado. {producto.capitalize()} se agregó con {unidades_asumar} unidades.")
         
         
-def mostrar_inventario_salir(stock):
-    for prod, cant in STOCK_INVENTARIO.items():
-        print(f"{prod.capitalize()}: {cant}")
-    print("Saliendo del programa.")
-    return True
+# def mostrar_inventario_salir(stock):
+#     for prod, cant in STOCK_INVENTARIO.items():
+#         print(f"{prod.capitalize()}: {cant}")
+#     print("Saliendo del programa.")
+#     return True
 
-# Realizamos el menú de opciones
-def gestionar_inventario():
-    while True:
-        print("\nOpciones:")
-        print("1. Consultar stock de un producto")
-        print("2. Agregar unidades / nuevo producto")
-        print("3. Mostrar todo el inventario y Salir")
+# # Realizamos el menú de opciones
+# def gestionar_inventario():
+#     while True:
+#         print("\nOpciones:")
+#         print("1. Consultar stock de un producto")
+#         print("2. Agregar unidades / nuevo producto")
+#         print("3. Mostrar todo el inventario y Salir")
         
         
-        option = input("ingrese una opcion (1 / 2 / 3): ").strip() 
+#         option = input("ingrese una opcion (1 / 2 / 3): ").strip() 
         
-        if option == '1':
-            consultar_stock(STOCK_INVENTARIO)
+#         if option == '1':
+#             consultar_stock(STOCK_INVENTARIO)
             
-        elif option == '2':
+#         elif option == '2':
             
-            modificar_stock(STOCK_INVENTARIO)
-            pass
+#             modificar_stock(STOCK_INVENTARIO)
+#             pass
         
-        elif option == '3':
-            mostrar_inventario_salir(STOCK_INVENTARIO)
+#         elif option == '3':
+#             mostrar_inventario_salir(STOCK_INVENTARIO)
             
-            break 
+#             break 
         
-        else:
-            print("Opción no válida. Por favor, intente de nuevo.")
+#         else:
+#             print("Opción no válida. Por favor, intente de nuevo.")
 
-gestionar_inventario()
+# gestionar_inventario()
+
+
+'''
+9) Creá una agenda donde las claves sean tuplas de (día, hora) y los valores sean eventos. 
+Ejemplo:
+agenda = ("lunes", "10:00"): "reunion",
+          ("martes", "15:00"): "calse de ingles"
+          
+Permití consultar qué actividad hay en cierto día y hora.
+'''
+
+def gestionar_agenda():
+    # Diccionario de agenda con tuplas (día, hora)
+    agenda = {
+        ("lunes", "10:00"): "Reunión de planificación",
+        ("martes", "15:00"): "Clase de inglés",
+        ("miércoles", "09:30"): "Entrenamiento en el gimnasio",
+        ("jueves", "18:00"): "Cita con el dentista"
+    }
     
+    print("--- Consulta de Agenda ---")
+    
+    # 1. Solicitar el día y la hora al usuario
+    dia_consulta = input("Ingresa el día a consultar (ej: lunes): ").strip().lower()
+    hora_consulta = input("Ingresa la hora a consultar (ej: 10:00): ").strip()
+    
+    
+    clave_busqueda = (dia_consulta, hora_consulta)
+    
+    # 3. Consultar el diccionario usando .get() para evitar errores si la clave no existe
+    evento = agenda.get(clave_busqueda)
+    
+    print("\n--- Resultado ---")
+    if evento:
+        print(f"La actividad para el {dia_consulta.capitalize()} a las {hora_consulta} es: {evento}")
+    else:
+        print(f"No hay actividades programadas para el {dia_consulta.capitalize()} a las {hora_consulta}.")
+
+# Ejecutar el programa
+gestionar_agenda()
         
         
