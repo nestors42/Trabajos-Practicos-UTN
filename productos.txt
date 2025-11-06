@@ -1,0 +1,4 @@
+nombre,precio,cantidad
+Azúcar,850,150
+Café,1200,80
+Leche,900,200
